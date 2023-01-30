@@ -13,6 +13,8 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+let employees = [];
+
 // log "Please build your team"
 console.log("Please build your team");
 
@@ -21,7 +23,7 @@ const teamManagerQuestions = [
     {
         // enter team manager's name
         type: 'input',
-        name: 'teamManagersName',
+        name: 'teamManagerName',
         message: "What is the team manager's name?",
     },
     {
@@ -39,7 +41,7 @@ const teamManagerQuestions = [
     {
         // enter team manager's phone number
         type: 'input',
-        name: 'teamManagerPhone',
+        name: 'officeNumber',
         message: "What is the team manager's office phone number?",
         // validation with regex for phone number
         validate(value) {
@@ -54,6 +56,8 @@ const teamManagerQuestions = [
     }
 ];
 
+
+
 // pivotal question that will enable the user to add an engineer,  or an intern, or build team
 const pivotQuestion = {
     type: 'list',
@@ -66,6 +70,7 @@ const pivotQuestion = {
     ]
 
 };
+
 
 // questions re: engineer
 const engineersQuestions = [
@@ -94,11 +99,12 @@ const engineersQuestions = [
     {
         // enter engineer's github username
         type: 'input',
-        name: 'engineerGithub',
+        name: 'github',
         message: "What is your engineer's GitHub username?",
     }
 
 ];
+
 
 // questions re: intern
 const internQuestions = [
@@ -126,17 +132,42 @@ const internQuestions = [
     {
         // enter intern's school
         type: 'input',
-        name: 'internSchool',
+        name: 'school',
         message: "What is your intern's school?",
     }
 
 ];
+// Function to pass manager response array to Manager.js 
+function getManagerInfo() {
+    inquirer.prompt(teamManagerQuestions).then((responseManager) => {
+        console.log(responseManager);
+        employees.push(new Manager(
+            responseManager.teamManagerName,
+            responseManager.teamManagerId,
+            responseManager.teamManagerEmail,
+            responseManager.officeNumber
+        ));
+        addEmployees()
+    })
+}
+// Function to call pivot questions & determine whether to add an engineer or intern or finish building the team 
+function addEmployees() {
+    return inquirer.prompt(pivotQuestion).then((response) => {
+        console.log(response);
+
+        if (response.menu === "Add an engineer?") {
+            getEngineerInfo()
+        }
+        else if (response.menu === "Add an intern?") {
+            getInternInfo()
+        }
+        else{
+            console.log('Complete!');
+            fs.write(outputPath,render(employees),(err) => err ? console.log("err") : console.log("Success"))
+        }
+    })
+}
 
 
-// inquirer.prompt(questions).then((answers) => {
-//     console.log(JSON.stringify(answers, null, '  '));
-// });
 
-
-
-
+getManagerInfo()
