@@ -185,6 +185,17 @@ function getEngineerInfo() {
 
 // Function to pass intern response array to Engineer.js
 
-
+function getInternInfo() {
+    inquirer.prompt(internQuestions).then((responseManager) => {
+        console.log(responseManager);
+        employees.push(new Intern(
+            responseManager.internName,
+            responseManager.internId,
+            responseManager.internEmail,
+            responseManager.school
+        ));
+        addEmployees()
+    })
+}
 
 getManagerInfo()
