@@ -137,6 +137,7 @@ const internQuestions = [
     }
 
 ];
+
 // Function to pass manager response array to Manager.js 
 function getManagerInfo() {
     inquirer.prompt(teamManagerQuestions).then((responseManager) => {
@@ -162,8 +163,8 @@ function addEmployees() {
             getInternInfo()
         }
         else{
-            console.log('Complete!');
-            fs.write(outputPath,render(employees),(err) => err ? console.log("err") : console.log("Success"))
+            console.log('Complete!')
+            fs.writeFile(outputPath,render(employees),(err) => err ? console.log("err") : console.log("Success"))
         }
     })
 }
@@ -171,13 +172,13 @@ function addEmployees() {
 // Function to pass engineer response array to Engineer.js 
 
 function getEngineerInfo() {
-    inquirer.prompt(engineersQuestions).then((responseManager) => {
-        console.log(responseManager);
+    inquirer.prompt(engineersQuestions).then((responseEngineer) => {
+        console.log(responseEngineer);
         employees.push(new Engineer(
-            responseManager.engineerName,
-            responseManager.engineerId,
-            responseManager.engineerEmail,
-            responseManager.github
+            responseEngineer.engineerName,
+            responseEngineer.engineerId,
+            responseEngineer.engineerEmail,
+            responseEngineer.github
         ));
         addEmployees()
     })
@@ -186,13 +187,13 @@ function getEngineerInfo() {
 // Function to pass intern response array to Engineer.js
 
 function getInternInfo() {
-    inquirer.prompt(internQuestions).then((responseManager) => {
-        console.log(responseManager);
+    inquirer.prompt(internQuestions).then((responseIntern) => {
+        console.log(responseIntern);
         employees.push(new Intern(
-            responseManager.internName,
-            responseManager.internId,
-            responseManager.internEmail,
-            responseManager.school
+            responseIntern.internName,
+            responseIntern.internId,
+            responseIntern.internEmail,
+            responseIntern.school
         ));
         addEmployees()
     })
