@@ -1,1 +1,7 @@
 /* Styles for team.html */
+
+.team-heading {
+    background-color: rgb(232 71 86);
+    color: white;
+}
+
