@@ -28,6 +28,7 @@
   Open the "__tests__" folder which contains tests for each class of Employee. To test a specific class, open the respective .js file within the terminal and run the command "npm run test". The results of the test will be logged in the terminal.<br>
 
   *Screenshot of the test results in vs code terminal*
+
   ![alt text](./assets/02-tests-using-jest.png)
 
 ## Built With
@@ -38,6 +39,7 @@ Team Profile Generator was built using;
 ![CSS](https://img.shields.io/badge/CSS-3-%23264de4)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-4-%237952b3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES5%20%26%206-%23fdda3e)
+![Node.js](https://img.shields.io/badge/Node-JS-%green)
 ![Inquirer](https://img.shields.io/badge/Inquirer-6.3.1-%23b3d4fc)
 
 
