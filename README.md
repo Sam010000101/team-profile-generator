@@ -39,7 +39,7 @@ Team Profile Generator was built using;
 ![CSS](https://img.shields.io/badge/CSS-3-%23264de4)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-4-%237952b3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES5%20%26%206-%23fdda3e)
-![Node.js](https://img.shields.io/badge/Node-JS-%green)
+![Node.js](https://img.shields.io/badge/Node-JS-%brightgreen)
 ![Inquirer](https://img.shields.io/badge/Inquirer-6.3.1-%23b3d4fc)
 
 
