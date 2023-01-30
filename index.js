@@ -168,6 +168,23 @@ function addEmployees() {
     })
 }
 
+// Function to pass engineer response array to Engineer.js 
+
+function getEngineerInfo() {
+    inquirer.prompt(engineersQuestions).then((responseManager) => {
+        console.log(responseManager);
+        employees.push(new Engineer(
+            responseManager.engineerName,
+            responseManager.engineerId,
+            responseManager.engineerEmail,
+            responseManager.github
+        ));
+        addEmployees()
+    })
+}
+
+// Function to pass intern response array to Engineer.js
+
 
 
 getManagerInfo()
